@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Interactive 3D Vending Machine Demo with QR scanning and real-time sync",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "tsx watch src/server/index.ts",
@@ -10,7 +13,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "tsc -p tsconfig.json",
-    "start": "node dist/server/index.js",
+    "start": "node dist/index.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint src/ tests/ --ext .ts,.tsx",
