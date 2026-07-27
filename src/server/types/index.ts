@@ -9,6 +9,7 @@ export interface Product {
   name: string;
   category: Category;
   imageUrl: string;
+  price: number;
   status: ProductStatus;
   pickedAt: string | null;
 }

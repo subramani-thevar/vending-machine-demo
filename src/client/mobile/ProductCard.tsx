@@ -57,6 +57,11 @@ export function ProductCard({ product, onPick }: Props) {
         {product.name}
       </span>
 
+      {/* Price */}
+      <span className={`text-xs font-bold mt-0.5 ${isSoldOut ? 'text-gray-400' : 'text-green-600'}`}>
+        ₹{product.price}
+      </span>
+
       {/* Sold out overlay */}
       {isSoldOut && (
         <span className="absolute inset-0 flex items-center justify-center bg-white/60 rounded-xl">

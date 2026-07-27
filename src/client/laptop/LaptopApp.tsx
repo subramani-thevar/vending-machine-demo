@@ -68,6 +68,7 @@ function ProductSlot({ product }: { product: Product }) {
       <span className="text-[10px] text-white text-center leading-tight truncate w-full">
         {product.name}
       </span>
+      <span className="text-[9px] text-yellow-300 font-bold mt-0.5">₹{product.price}</span>
       {isSoldOut && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg">
           <span className="text-[9px] font-bold text-red-400 bg-black/70 px-1 rounded">SOLD</span>
