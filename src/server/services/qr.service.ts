@@ -22,8 +22,9 @@ export class QRService {
 
   async regenerate(): Promise<QRData> {
     const version = this.productService.getVersion();
-    const protocol = config.nodeEnv === 'production' ? 'https' : 'http';
-    const url = `${protocol}://${config.serverHost}/mobile?v=${version}`;
+    const protocol = config.serverHost.includes('localhost') ? 'http' : 'https';
+    const port = config.serverHost.includes('localhost') ? `:${config.port}` : '';
+    const url = `${protocol}://${config.serverHost}${port}/mobile?v=${version}`;
 
     try {
       const qrCode = await QRCode.toDataURL(url, {

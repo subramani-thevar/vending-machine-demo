@@ -1,7 +1,7 @@
 export const config = {
   port: parseInt(process.env.PORT || '3001', 10),
   nodeEnv: process.env.NODE_ENV || 'development',
-  serverHost: process.env.SERVER_HOST || 'localhost',
+  serverHost: process.env.SERVER_HOST || 'vending-machine-demo.onrender.com',
   resetIntervalMs: getResetInterval(),
   logLevel: process.env.LOG_LEVEL || 'info',
   maxConnections: parseInt(process.env.MAX_CONNECTIONS || '100', 10),
