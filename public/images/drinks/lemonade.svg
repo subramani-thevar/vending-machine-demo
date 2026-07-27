@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <path d="M24 8 L22 12 L22 56 Q22 60 26 60 L38 60 Q42 60 42 56 L42 12 L40 8 Z" fill="#f1c40f"/>
+  <path d="M24 8 L40 8 Q40 12 38 12 L26 12 Q24 12 24 8" fill="#d4ac0d"/>
+  <rect x="24" y="30" width="16" height="28" rx="2" fill="#f9e654"/>
+  <rect x="26" y="16" width="12" height="8" rx="1" fill="#fff" opacity="0.6"/>
+  <text x="32" y="22" text-anchor="middle" font-size="4" fill="#b7950b">LEMON</text>
+  <text x="32" y="48" text-anchor="middle" font-size="14">🍋</text>
+</svg>

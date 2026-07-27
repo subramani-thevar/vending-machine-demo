@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+*.log
+.git
+.github
+aidlc-docs
+aidlc-rules
+.kiro
+coverage
+.DS_Store
+certbot
+nginx
+tests

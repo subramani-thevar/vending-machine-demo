@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <ellipse cx="32" cy="36" rx="18" ry="22" fill="#f39c12"/>
+  <ellipse cx="28" cy="36" rx="14" ry="20" fill="#f1c40f"/>
+  <path d="M32 14 Q36 8 40 10" stroke="#27ae60" stroke-width="2" fill="none"/>
+  <ellipse cx="36" cy="11" rx="4" ry="3" fill="#27ae60"/>
+  <text x="32" y="44" text-anchor="middle" font-size="20">🥭</text>
+</svg>

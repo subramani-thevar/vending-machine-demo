@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <path d="M20 58 L16 30 L48 30 L44 58 Z" fill="#e74c3c"/>
+  <path d="M18 30 L46 30" stroke="#c0392b" stroke-width="2"/>
+  <circle cx="24" cy="24" r="6" fill="#f1c40f"/>
+  <circle cx="32" cy="20" r="7" fill="#f4d03f"/>
+  <circle cx="40" cy="24" r="6" fill="#f1c40f"/>
+  <circle cx="28" cy="14" r="5" fill="#f9e654"/>
+  <circle cx="36" cy="14" r="5" fill="#f4d03f"/>
+  <circle cx="32" cy="10" r="4" fill="#f9e654"/>
+  <text x="32" y="50" text-anchor="middle" font-size="16">🍿</text>
+</svg>

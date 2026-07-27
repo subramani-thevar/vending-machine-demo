@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <path d="M18 10 L14 54 L50 54 L46 10 Z" fill="#e67e22"/>
+  <path d="M18 10 L46 10 Q32 16 18 10" fill="#d35400"/>
+  <path d="M20 14 L16 50 L48 50 L44 14 Z" fill="#f39c12"/>
+  <rect x="22" y="26" width="20" height="12" rx="2" fill="#fff" opacity="0.8"/>
+  <text x="32" y="36" text-anchor="middle" font-size="8" fill="#e67e22" font-weight="bold">CHIPS</text>
+  <text x="32" y="52" text-anchor="middle" font-size="14">🍟</text>
+</svg>

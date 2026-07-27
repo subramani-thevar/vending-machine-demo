@@ -1,0 +1,61 @@
+name: Build, Test & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript compile check
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Vulnerability scan
+        run: npm audit --audit-level=high
+
+      - name: Run tests (with PBT seed logging)
+        run: npm test
+        env:
+          VITEST_SEED: ${{ github.run_id }}
+
+      - name: Build
+        run: npm run build
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/vending-machine-demo
+            git pull origin main
+            docker compose build app
+            docker compose up -d app
+            sleep 5
+            curl -f http://localhost:3001/health || exit 1
+            echo "Deploy successful"

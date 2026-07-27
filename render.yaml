@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: vending-machine-demo
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: RESET_INTERVAL_MS
+        value: 300000
+      - key: LOG_LEVEL
+        value: info
+      - key: MAX_CONNECTIONS
+        value: 100
+      - key: SERVER_HOST
+        sync: false
