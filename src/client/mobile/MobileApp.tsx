@@ -1,26 +1,42 @@
 import React, { useState } from 'react';
 import { useSocket } from '../hooks/useSocket';
-import { Category } from '../types';
+import { Category, Product } from '../types';
 import { CategoryTabs } from './CategoryTabs';
 import { ProductGrid } from './ProductGrid';
 import { PickConfirmation } from './PickConfirmation';
+import { PaymentModal } from './PaymentModal';
 
 export function MobileApp() {
   const { connected, products, pickProduct, lastPickResult } = useSocket('mobile');
   const [selectedCategory, setSelectedCategory] = useState<Category | 'all'>('all');
   const [pickedProductName, setPickedProductName] = useState<string | null>(null);
+  const [paymentProduct, setPaymentProduct] = useState<Product | null>(null);
 
   const filteredProducts =
     selectedCategory === 'all'
       ? products
       : products.filter((p) => p.category === selectedCategory);
 
+  // Show payment modal instead of immediately picking
   const handlePick = (productId: string) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
-      setPickedProductName(product.name);
-      pickProduct(productId);
+      setPaymentProduct(product);
     }
+  };
+
+  // Called when user confirms payment
+  const handlePaymentConfirm = () => {
+    if (paymentProduct) {
+      setPickedProductName(paymentProduct.name);
+      pickProduct(paymentProduct.id);
+      setPaymentProduct(null);
+    }
+  };
+
+  // Called when user cancels payment
+  const handlePaymentCancel = () => {
+    setPaymentProduct(null);
   };
 
   const availableCount = products.filter((p) => p.status === 'available').length;
@@ -60,6 +76,15 @@ export function MobileApp() {
           <ProductGrid products={filteredProducts} onPick={handlePick} />
         )}
       </main>
+
+      {/* Payment modal */}
+      {paymentProduct && (
+        <PaymentModal
+          product={paymentProduct}
+          onConfirm={handlePaymentConfirm}
+          onCancel={handlePaymentCancel}
+        />
+      )}
 
       {/* Pick confirmation toast */}
       <PickConfirmation
