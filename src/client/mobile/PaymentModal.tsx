@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Product } from '../types';
 
 interface Props {
@@ -8,25 +8,9 @@ interface Props {
 }
 
 const UPI_ID = 'submani-2@okhdfcbank';
+const UPI_QR_IMAGE = '/images/payment/upi-qr.png';
 
 export function PaymentModal({ product, onConfirm, onCancel }: Props) {
-  // Generate UPI deep link for QR code
-  const upiUrl = useMemo(() => {
-    const params = new URLSearchParams({
-      pa: UPI_ID,
-      pn: 'Vending Machine',
-      am: product.price.toString(),
-      cu: 'INR',
-      tn: `Payment for ${product.name}`,
-    });
-    return `upi://pay?${params.toString()}`;
-  }, [product]);
-
-  // Use a QR code API to render the UPI QR (no extra dependency needed)
-  const qrImageUrl = useMemo(() => {
-    const encoded = encodeURIComponent(upiUrl);
-    return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encoded}`;
-  }, [upiUrl]);
 
   return (
     <div
@@ -61,9 +45,9 @@ export function PaymentModal({ product, onConfirm, onCancel }: Props) {
           {/* QR Code */}
           <div className="border-2 border-dashed border-gray-200 rounded-xl p-3 mb-3">
             <img
-              src={qrImageUrl}
+              src={UPI_QR_IMAGE}
               alt="UPI Payment QR Code"
-              className="w-48 h-48"
+              className="w-48 h-48 rounded-lg"
               loading="eager"
             />
           </div>
